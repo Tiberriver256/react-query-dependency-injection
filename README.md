@@ -2,29 +2,27 @@
 
 Using React Query, React Context, Custom Hooks, and Typescript to make easy-to-use easy-to-test code for consuming an API in your React application.
 
-## How to use this repo
+## Dependency Injection
 
-This repo is a training resource for stepping through how to set up a wrapper
-around an API using React Query and dependency injection via React Context.
+### Concept
 
-The learning modules are split up into separate git branches. Each module builds
-on the learnings of the previous module. The README.md will change for each
-branch explaining the concept and will have working code you can inspect.
+If you're unfamiliar with the concept of dependency injection and why it is
+useful I would recommend reading through [this blog by Martin Fowler on the
+topic](https://martinfowler.com/articles/injection.html).
 
-The modules are:
+### The Goal
 
-1. `1--dependency-injection` - Learning how to use React Context as a
-   dependency injection mechanism
-2. `2--react-query` - Covering the basic benefits of using React Query
-3. `3--react-query-custom-hooks` - Covering how to wrap React Query into custom
-   hooks which make consumption a bit easier.
-4. `4--react-query-dependency-injection` - Covering using dependency injection
-   within React Query custom hooks.
+The goal of using dependency injection within the context of this React Query
+learning repo is to be able to use the same react-query hooks in our unit tests
+and our production app. We'll use dependency injection to inject a class that
+talks to our API in productio and inject a class that just uses in-memory data
+during unit testing.
 
-## Technology
+### React Context
 
-* [Create-React-App](https://create-react-app.dev/)
-* [TypeScript](https://www.typescriptlang.org/)
-* [React Query](https://react-query.tanstack.com/)
-* [React Context](https://reactjs.org/docs/context.html)
-* [Custom Hooks w/ React Context](https://kentcdodds.com/blog/how-to-use-react-context-effectively)
+React Context is mainly pitched as a method for storing application state and
+sharing that application state between components. However, we can also use
+React Context to store and share functions or classes. This makes it an
+excellent dependency injection mechanism.
+
+For example, let's build a Context that stores
