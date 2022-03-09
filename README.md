@@ -1,46 +1,30 @@
-# Getting Started with Create React App
+# React Query Dependency Injection
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Using React Query, React Context, Custom Hooks, and Typescript to make easy-to-use easy-to-test code for consuming an API in your React application.
 
-## Available Scripts
+## How to use this repo
 
-In the project directory, you can run:
+This repo is a training resource for stepping through how to set up a wrapper
+around an API using React Query and dependency injection via React Context.
 
-### `npm start`
+The learning modules are split up into separate git branches. Each module builds
+on the learnings of the previous module. The README.md will change for each
+branch explaining the concept and will have working code you can inspect.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The modules are:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. `1--dependency-injection` - Learning how to use React Context as a
+   dependency injection mechanism
+2. `2--react-query` - Covering the basic benefits of using React Query
+3. `3--react-query-custom-hooks` - Covering how to wrap React Query into custom
+   hooks which make consumption a bit easier.
+4. `4--react-query-dependency-injection` - Covering using dependency injection
+   within React Query custom hooks.
 
-### `npm test`
+## Technology
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+* [Create-React-App](https://create-react-app.dev/)
+* [TypeScript](https://www.typescriptlang.org/)
+* [React Query](https://react-query.tanstack.com/)
+* [React Context](https://reactjs.org/docs/context.html)
+* [Custom Hooks w/ React Context](https://kentcdodds.com/blog/how-to-use-react-context-effectively)
