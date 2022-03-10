@@ -15,10 +15,9 @@ The modules are:
 
 1. `1--dependency-injection` - Learning how to use React Context as a
    dependency injection mechanism
-2. `2--react-query` - Covering the basic benefits of using React Query
-3. `3--react-query-custom-hooks` - Covering how to wrap React Query into custom
+2. `2--react-query-custom-hooks` - Covering how to wrap React Query into custom
    hooks which make consumption a bit easier.
-4. `4--react-query-dependency-injection` - Covering using dependency injection
+3. `3--react-query-dependency-injection` - Covering using dependency injection
    within React Query custom hooks.
 
 ## Technology
