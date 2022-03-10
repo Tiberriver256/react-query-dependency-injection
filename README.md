@@ -25,4 +25,5 @@ sharing that application state between components. However, we can also use
 React Context to store and share functions or classes. This makes it an
 excellent dependency injection mechanism.
 
-For example, let's build a Context that stores
+For example, let's build a Context that shares a function that returns a string:
+
