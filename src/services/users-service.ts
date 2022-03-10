@@ -1,33 +1,9 @@
+import { createContext, useContext } from 'react';
 import { UseQueryOptions, QueryKey, UseQueryResult, useQuery } from 'react-query';
 
-class UsersApiService {
-  async getById(id: number): Promise<User> {
-    var response = await fetch(`https://reqres.in/api/users/${id}`);
-
-    const responseContent = await response.json();
-
-    if (!response.ok) {
-      throw new Error(`Failed to update user profile. ${responseContent}`);
-    }
-
-    return responseContent as User;
-  }
-
-  async listUsers(page?: number): Promise<ListUsersResponse> {
-    const urlSearchParams = new URLSearchParams();
-    if (page) {
-      urlSearchParams.append('page', page.toString());
-    }
-    var response = await fetch(`https://reqres.in/api/users?${urlSearchParams.toString()}`);
-
-    const responseContent = await response.json();
-
-    if (!response.ok) {
-      throw new Error(`Failed to update user profile. ${responseContent}`);
-    }
-
-    return responseContent as ListUsersResponse;
-  }
+export interface UsersServiceImplementation {
+  getById(id: number): Promise<User>;
+  listUsers(page?: number): Promise<ListUsersResponse>;
 }
 
 export interface ListUsersResponse {
@@ -52,7 +28,18 @@ export interface Support {
   text: string;
 }
 
-const usersApiService = new UsersApiService();
+export const UsersServiceContext = createContext<UsersServiceImplementation | null>(null);
+UsersServiceContext.displayName = 'UsersServiceContext';
+
+const ERROR_TEXT = 'UsersService must be used within an UsersServiceContext.Provider component';
+
+const useUsersContext = () => {
+  const context = useContext(UsersServiceContext);
+  if (context == null) {
+    throw new Error(ERROR_TEXT);
+  }
+  return context;
+};
 
 export const UsersService = {
   useGetUserByIdQuery(
@@ -62,7 +49,8 @@ export const UsersService = {
       refetchOnWindowFocus: false,
     }
   ): UseQueryResult<User, Error> {
-    return useQuery<User, Error>(['UsersService.getById', id], () => usersApiService.getById(id), queryOptions);
+    var userServiceImplementation = useUsersContext();
+    return useQuery<User, Error>(['UsersService.getById', id], () => userServiceImplementation.getById(id), queryOptions);
   },
   useListUsersQuery(
     page: number = 1,
@@ -71,6 +59,7 @@ export const UsersService = {
       refetchOnWindowFocus: false,
     }
   ): UseQueryResult<ListUsersResponse, Error> {
-    return useQuery<ListUsersResponse, Error>(['UsersService.listUsers', page], () => usersApiService.listUsers(page), queryOptions);
+    var userServiceImplementation = useUsersContext();
+    return useQuery<ListUsersResponse, Error>(['UsersService.listUsers', page], () => userServiceImplementation.listUsers(page), queryOptions);
   },
 };
